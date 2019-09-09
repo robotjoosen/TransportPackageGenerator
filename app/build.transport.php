@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-use RobotJoosen\TransportPackageBuilder;
+use RobotJoosen\TransportPackageGenerator\Builder;
 use Symfony\Component\Yaml\Yaml;
 
 define('ROOT_PATH', dirname(__FILE__) . '/');
@@ -34,7 +34,7 @@ if (file_exists(PKG_PATH . 'package.config.yaml')) {
 }
 
 /** Start building */
-$builder = new TransportPackageBuilder($modx, $package_config);
+$builder = new Builder($modx, $package_config);
 $builder->build();
 unset($builder);
 ?>
