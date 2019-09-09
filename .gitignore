@@ -8,5 +8,5 @@
 !app
 !examples
 app/build.config.php
-TransportPackageGenerator
-TransportPackageGenerator.cmd
+!TransportPackageGenerator
+!TransportPackageGenerator.cmd
