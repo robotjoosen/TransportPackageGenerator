@@ -1,0 +1,35 @@
+PKG_NAME: SampleComponent
+PKG_VERSION: 1.0.0
+PKG_RELEASE: pl
+PKG_PATH: path/to/your/core/components/samplecomponent
+snippets:
+  - name: SampleSnippet
+    description: "Sample snippet description"
+    filename: sample.snippet.php
+    properties:
+      - name: sampleProperty
+chunks:
+  - name: SampleChunk
+    description: "Sample chunk description"
+    filename: sample.chunk.tpl
+    properties:
+      - name: sampleProperty
+plugins:
+  - name: SamplePlugin
+    description: "Sample plugin description"
+    filename: sample.plugin.php
+    events:
+      - event: OnLoadWebDocument
+system_settings:
+  - key: samplecomponent.sample_setting
+    value: true
+    xtype: combo-boolean
+    namespace: samplecomponent
+    area: default
+  - key: samplecomponent.do_something
+    value: 'Sample'
+menu:
+  - menu:
+      text: "SampleMenu"
+    action:
+      controller: index
