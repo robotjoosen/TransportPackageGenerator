@@ -18,7 +18,7 @@ class ComposerStaticInit1272f6ed15636cb36925de1896f79e8b
         ),
         'R' => 
         array (
-            'RobotJoosen\\' => 12,
+            'RobotJoosen\\TransportPackageGenerator\\' => 38,
         ),
     );
 
@@ -31,7 +31,7 @@ class ComposerStaticInit1272f6ed15636cb36925de1896f79e8b
         array (
             0 => __DIR__ . '/..' . '/symfony/yaml',
         ),
-        'RobotJoosen\\' => 
+        'RobotJoosen\\TransportPackageGenerator\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),
