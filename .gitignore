@@ -1,0 +1,10 @@
+/*
+.DS_STORE
+
+!.gitignore
+!readme.md
+!license
+
+!_build
+_build/transportpackagegenerator/build.config.php
+!core
