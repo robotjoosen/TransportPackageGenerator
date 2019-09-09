@@ -4,7 +4,7 @@
  * @todo Template Variable
  */
 
-namespace RobotJoosen\TransportPackageGenerator;
+namespace RobotJoosen;
 
 use modX;
 use modPackageBuilder;
@@ -13,7 +13,7 @@ use xPDOSimpleObject;
 use xPDOTransport;
 use modProcessor;
 
-class Builder
+class TransportPackageBuilder
 {
 
     /**
