@@ -1,0 +1,21 @@
+{
+    "name": "robotjoosen/transport-builder",
+    "description": "Interactive CLI Transport Package Builder",
+    "type": "project",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Roald Joosen",
+            "email": "robotjoosen@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.6",
+        "symfony/yaml": "^4.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "RobotJoosen\\": "src/"
+        }
+    }
+}
