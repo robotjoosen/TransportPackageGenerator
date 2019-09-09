@@ -46,4 +46,3 @@ if (file_exists(PKG_PATH . 'package.config.yaml')) {
 $builder = new Builder($modx, $package_config);
 $builder->build();
 unset($builder);
-?>
