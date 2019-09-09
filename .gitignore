@@ -6,5 +6,5 @@
 !license
 
 !_build
-_build/transportpackagegenerator/build.config.php
 !core
+_build/build.config.php
