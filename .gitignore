@@ -5,8 +5,6 @@
 !readme.md
 !license
 
-!app
-!examples
-app/build.config.php
-TransportPackageGenerator
-TransportPackageGenerator.cmd
+!_build
+!core
+_build/build.config.php
