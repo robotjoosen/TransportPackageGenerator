@@ -47,6 +47,11 @@ if (
 }
 unset($modx_config_path, $modx_class_path);
 
+if(!class_exists('modX')) {
+    echo "Oops, something went wrong. Failed to initialize MODX";
+    exit();
+}
+
 /** Get configuration settings */
 $package_config_file = PKG_PATH . 'package.config.yaml';
 if (file_exists($package_config_file)) {
