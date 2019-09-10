@@ -4,8 +4,10 @@ declare(strict_types=1);
 use RobotJoosen\TransportPackageGenerator\Builder;
 use Symfony\Component\Yaml\Yaml;
 
-define('ROOT_PATH', dirname(__FILE__) . '/');
 require_once ROOT_PATH . 'vendor/autoload.php';
+define('ROOT_PATH', dirname(__FILE__) . DIRECTORY_SEPARATOR);
+define('MODX_BASE_PATH', getcwd() . DIRECTORY_SEPARATOR);
+define('MODX_CORE_PATH', MODX_BASE_PATH . 'core/');
 
 /** Check if build configurator is present */
 if (file_exists(ROOT_PATH . 'build.config.php')) {
