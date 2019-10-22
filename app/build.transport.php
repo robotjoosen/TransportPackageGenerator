@@ -70,7 +70,7 @@ if(!class_exists('modX')) {
 }
 
 /** Get configuration settings */
-$package_config_file = PKG_PATH . 'package.config.yaml';
+$package_config_file = MODX_BASE_PATH . '../_build/' . PKG_NAME_LOWER . '/package.config.yaml';
 if (file_exists($package_config_file)) {
     try {
         $config_yaml = file_get_contents($package_config_file);
@@ -80,7 +80,7 @@ if (file_exists($package_config_file)) {
         exit();
     }
 } else {
-    echo "Configuration file not found: " . PKG_PATH . "package.config.yaml\n";
+    echo "Configuration file not found: " . $package_config_file;
     exit();
 }
 unset($package_config_file);
