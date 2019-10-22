@@ -5,13 +5,13 @@ use RobotJoosen\TransportPackageGenerator\Builder;
 use Symfony\Component\Yaml\Yaml;
 
 define('ROOT_PATH', dirname(__FILE__) . DIRECTORY_SEPARATOR);
-define('MODX_CORE_PATH', MODX_BASE_PATH . 'core/');
 
 define('MODX_BASE_URL', getcwd() . DIRECTORY_SEPARATOR);
 define('MODX_MANAGER_URL', MODX_BASE_PATH . 'manager/');
 define('MODX_ASSETS_URL', MODX_BASE_PATH . 'assets/');
 define('MODX_CONNECTORS_URL', MODX_BASE_PATH . 'connectors/');
 
+define('MODX_CORE_PATH', MODX_BASE_PATH . 'core/');
 define('MODX_BASE_PATH', MODX_BASE_URL);
 define('MODX_MANAGER_PATH', MODX_MANAGER_URL);
 define('MODX_CONNECTORS_PATH', MODX_CONNECTORS_URL);
