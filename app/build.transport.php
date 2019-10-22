@@ -64,7 +64,7 @@ if (
 }
 unset($modx_config_path, $modx_class_path);
 
-if(!class_exists('modX')) {
+if (!class_exists('modX')) {
     echo "Oops, something went wrong. Failed to initialize MODX";
     exit();
 }
@@ -86,7 +86,6 @@ if (file_exists($package_config_file)) {
 unset($package_config_file);
 
 /** Start building */
-
 $builder = new Builder($modx, $package_config);
 $builder->build();
 unset($builder);
