@@ -242,7 +242,7 @@ class Builder
             $this->builder->putVehicle($vehicle);
             unset($vehicle);
         }
-        $this->infoMessage('Packaged in ' . count($menu_items) . ' menu items.');
+        $this->infoMessage('Packaged ' . count($menu_items) . ' of ' . count($this->config['menu']) . ' menu items.');
         flush();
     }
 
@@ -251,20 +251,20 @@ class Builder
         $menu_items = [];
         $i = 1;
         foreach ($items as $item) {
-            if ($item['menu']['text']) {
+            if ($item['text']) {
                 $action = null;
                 $menu_items[$i] = $this->modx->newObject('modMenu');
-                $menu_items[$i]->fromArray(array(
-                    'text' => $item['menu']['text'],
-                    'parent' => $item['menu']['parent'] ?? 'components',
-                    'description' => $item['menu']['description'] ?? '',
-                    'icon' => $item['menu']['icon'] ?? '',
-                    'menuindex' => $item['menu']['menuindex'] ?? 0,
-                    'params' => $item['menu']['params'] ?? '',
-                    'handler' => $item['menu']['handler'] ?? '',
-                    'namespace' => $item['menu']['namespace'] ?? $this->config['PKG_NAME_LOWER'],
-                    'action' => $item['menu']['action'] ?? '',
-                ), '', true, true);
+                $menu_items[$i]->fromArray([
+                    'text' => $item['text'],
+                    'parent' => $item['parent'] ?? 'components',
+                    'description' => $item['description'] ?? '',
+                    'icon' => $item['icon'] ?? '',
+                    'menuindex' => $item['menuindex'] ?? 0,
+                    'params' => $item['params'] ?? '',
+                    'handler' => $item['handler'] ?? '',
+                    'namespace' => $item['namespace'] ?? $this->config['PKG_NAME_LOWER'],
+                    'action' => $item['action'] ?? '',
+                ], '', true, true);
                 $i++;
                 unset($action);
             }
