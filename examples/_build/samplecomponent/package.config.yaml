@@ -1,7 +1,6 @@
 PKG_NAME: SampleComponent
 PKG_VERSION: 1.0.0
 PKG_RELEASE: pl
-PKG_PATH: path/to/your/core/components/samplecomponent
 snippets:
   - name: SampleSnippet
     description: "Sample snippet description"
@@ -29,7 +28,6 @@ system_settings:
   - key: samplecomponent.do_something
     value: 'Sample'
 menu:
-  - menu:
-      text: "SampleMenu"
-    action:
-      controller: index
+  - text: samplecomponent
+    description: samplecomponent.desc
+    action: index

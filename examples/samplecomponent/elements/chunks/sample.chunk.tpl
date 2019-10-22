@@ -1,3 +1,0 @@
-<section>
-    Test Chunk
-</section>
