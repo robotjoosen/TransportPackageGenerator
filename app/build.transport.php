@@ -28,14 +28,22 @@ if (file_exists($autoload_path)) {
 unset($autoload_path);
 
 /** Check if build configurator is present */
-$build_config_path = ROOT_PATH . 'build.config.php';
-if (file_exists($build_config_path)) {
-    require_once $build_config_path;
+$arguments = [];
+if (isset($argc)) {
+    for ($i = 0; $i < $argc; $i++) {
+        $arguments[] = $argv[$i];
+    }
 } else {
-    echo "Build configuration file not found.\nRename build.config.sample.php to build.config.php and update values;\nOr use command below:\n~ mv build.config.sample.php build.config.php\n";
+    echo "argc and argv disabled\n";
     exit();
 }
-unset($build_config_path);
+if (isset($arguments[1])) {
+    define('PKG_NAME_LOWER', $arguments[1]);
+    define('PKG_PATH', MODX_CORE_PATH . 'components/' . $arguments[1] . '/');
+} else {
+    echo 'Package not defined, please use: TransportPackageGenerator package_name';
+    exit();
+}
 
 /** Check if MODX installation is present */
 $modx_config_path = MODX_CORE_PATH . 'config/config.inc.php';
