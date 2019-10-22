@@ -68,17 +68,18 @@ class Builder
             'PKG_PATH' => null,
             'build' => '/',
             'data' => '/data/',
-            'resolvers' => '/resolvers/',
             'snippets' => []
         ], $config);
         $this->config['PKG_NAME_LOWER'] = strtolower($this->config['PKG_NAME']);
         $this->config = array_merge($this->config, [
+            'resolvers' => MODX_BASE_PATH . '../_build/' . $this->config['PKG_NAME_LOWER'] . '/resolvers/',
             'chunk_path' => MODX_CORE_PATH . 'components/' . $this->config['PKG_NAME_LOWER'] . '/elements/chunks/',
             'snippet_path' => MODX_CORE_PATH . 'components/' . $this->config['PKG_NAME_LOWER'] . '/elements/snippets/',
             'plugin_path' => MODX_CORE_PATH . 'components/' . $this->config['PKG_NAME_LOWER'] . '/elements/plugins/',
             'template_path' => MODX_CORE_PATH . 'components/' . $this->config['PKG_NAME_LOWER'] . '/elements/templates/',
             'lexicon_path' => MODX_CORE_PATH . 'components/' . $this->config['PKG_NAME_LOWER'] . '/lexicon/',
             'docs_path' => MODX_CORE_PATH . 'components/' . $this->config['PKG_NAME_LOWER'] . '/docs/',
+            'model_path' => MODX_CORE_PATH . 'components/' . $this->config['PKG_NAME_LOWER'] . '/model/',
             'pages_path' => MODX_CORE_PATH . 'components/' . $this->config['PKG_NAME_LOWER'] . '/elements/pages/',
             'source_assets' => MODX_ASSETS_PATH . 'components/' . $this->config['PKG_NAME_LOWER'] . '/',
             'source_core' => MODX_CORE_PATH . 'components/' . $this->config['PKG_NAME_LOWER'] . '/'
@@ -129,6 +130,7 @@ class Builder
                 $this->addPlugins($category);
                 $vehicle = $this->createCategoryVehicle($category);
                 $this->addFiles($vehicle);
+                $this->addTableResolver($vehicle);
                 $this->builder->putVehicle($vehicle);
             } else {
                 $this->errorMessage('Failed to create category');
@@ -221,6 +223,20 @@ class Builder
             $this->notifyMessge('Core component not found: ' . $this->config['source_core']);
         }
         $this->infoMessage('Added files.');
+    }
+
+    // ======================================================================
+    //  Database
+    // ======================================================================
+
+    /**
+     * @param modTransportVehicle $vehicle
+     */
+    private function addTableResolver(&$vehicle)
+    {
+        $vehicle->resolve('php', [
+            'source' => $this->config['resolvers'] . 'table.resolver.php'
+        ]);
     }
 
     // ======================================================================
