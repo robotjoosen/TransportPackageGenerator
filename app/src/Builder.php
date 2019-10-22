@@ -119,8 +119,8 @@ class Builder
             $this->createPackage();
             $this->addSystemSettings();
             $this->addMenuItems();
-            $this->addAccessPolicies();
-            $this->addAccesPolicyTemplates();
+//            $this->addAccessPolicies();
+//            $this->addAccesPolicyTemplates();
             if ($category = $this->setCategory()) {
                 $this->addSnippets($category);
                 $this->addChunks($category);
