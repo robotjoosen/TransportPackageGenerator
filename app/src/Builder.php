@@ -125,6 +125,7 @@ class Builder
                 $this->addSnippets($category);
                 $this->addChunks($category);
                 $this->addTemplates($category);
+//                $this->addTVs();
                 $this->addPlugins($category);
                 $vehicle = $this->createCategoryVehicle($category);
                 $this->addFiles($vehicle);
