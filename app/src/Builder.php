@@ -112,8 +112,7 @@ class Builder
         if (
             !is_null($this->config['PKG_NAME']) &&
             !is_null($this->config['PKG_VERSION']) &&
-            !is_null($this->config['PKG_RELEASE']) &&
-            !is_null($this->config['PKG_PATH'])
+            !is_null($this->config['PKG_RELEASE'])
         ) {
             $this->createBuilder();
             $this->createPackage();
