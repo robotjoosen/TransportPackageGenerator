@@ -119,6 +119,7 @@ class Builder
             $this->createPackage();
             $this->addSystemSettings();
             $this->addMenuItems();
+            $this->addNamespaces();
 //            $this->addAccessPolicies();
 //            $this->addAccesPolicyTemplates();
             if ($category = $this->setCategory()) {
@@ -277,17 +278,28 @@ class Builder
      */
     private function addNamespaces(): void
     {
-//        $namespace = $modx->newObject('modNamespace');
-//        $namespace->set('name','recaptcha');
-//        $namespace->set('path','{core_path}components/recaptcha/');
-//        $vehicle = $builder->createVehicle($namespace,array(
-//            xPDOTransport::UNIQUE_KEY => 'name',
-//            xPDOTransport::PRESERVE_KEYS => true,
-//            xPDOTransport::UPDATE_OBJECT => true,
-//        ));
-//        $builder->putVehicle($vehicle);
-//        $modx->log(modX::LOG_LEVEL_INFO,'Packaged in reCaptcha namespace.'); flush();
-//        unset($vehicle,$namespace);
+        $i = 0;
+        foreach ($this->config['namespaces'] as $properties) {
+            if (isset($properties['name'])) {
+                $namespace = $this->modx->newObject('modNamespace');
+                $namespace->set('name', $properties['name']);
+                $namespace->set('path', $properties['path'] ?? '{core_path}components/' . $properties['name'] . '/');
+                if (isset($properties['assets_path'])) {
+                    $namespace->set('assets_path', $properties['assets_path']);
+                }
+                $vehicle = $this->builder->createVehicle($namespace, array(
+                    xPDOTransport::UNIQUE_KEY => 'name',
+                    xPDOTransport::PRESERVE_KEYS => true,
+                    xPDOTransport::UPDATE_OBJECT => true,
+                ));
+                $this->builder->putVehicle($vehicle);
+                flush();
+                unset($vehicle, $namespace);
+                $i++;
+            }
+        }
+        $this->infoMessage('Packaged ' . $i . ' of ' . count($this->config['namespaces']) . ' namespaces.');
+        unset($i);
     }
 
     /**
