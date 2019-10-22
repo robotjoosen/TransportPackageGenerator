@@ -372,7 +372,7 @@ class Builder
             $vehicle = $this->builder->createVehicle($setting, $attributes);
             $this->builder->putVehicle($vehicle);
         }
-        $this->infoMessage('Packaged in ' . count($settings) . ' system settings.');
+        $this->infoMessage('Packaged ' . count($settings) . ' of ' . count($this->config['system_settings']) . ' system settings.');
         flush();
         unset($settings, $setting, $attributes);
     }
@@ -415,14 +415,16 @@ class Builder
      */
     private function addSnippets(&$category): void
     {
-        $elements = $this->createElement($this->config['snippets'], 'modSnippet', $this->config['snippet_path']);
-        if (!is_array($elements)) {
-            $this->errorMessage('Could not package in snippets.');
-        } else {
-            $category->addMany($elements);
-            $this->infoMessage('Packaged in ' . count($elements) . ' snippets.');
+        if (isset($this->config['snippets'])) {
+            $elements = $this->createElement($this->config['snippets'], 'modSnippet', $this->config['snippet_path']);
+            if (!is_array($elements)) {
+                $this->errorMessage('Could not package in snippets.');
+            } else {
+                $category->addMany($elements);
+                $this->infoMessage('Packaged ' . count($elements) . ' of ' . count($this->config['snippets']) . ' snippets.');
+            }
+            unset($elements);
         }
-        unset($elements);
     }
 
     /**
@@ -431,14 +433,16 @@ class Builder
      */
     private function addChunks(&$category): void
     {
-        $elements = $this->createElement($this->config['chunks'], 'modChunk', $this->config['chunk_path']);
-        if (!is_array($elements)) {
-            $this->errorMessage('Could not package in chunks.');
-        } else {
-            $category->addMany($elements);
-            $this->infoMessage('Packaged in ' . count($elements) . ' chunks.');
+        if (isset($this->config['chunks'])) {
+            $elements = $this->createElement($this->config['chunks'], 'modChunk', $this->config['chunk_path']);
+            if (!is_array($elements)) {
+                $this->errorMessage('Could not package in chunks.');
+            } else {
+                $category->addMany($elements);
+                $this->infoMessage('Packaged ' . count($elements) . ' of ' . count($this->config['chunks']) . ' chunks.');
+            }
+            unset($elements);
         }
-        unset($elements);
     }
 
     /**
@@ -446,14 +450,16 @@ class Builder
      */
     private function addTemplates(&$category): void
     {
-        $elements = $this->createElement($this->config['templates'], 'modTemplate', $this->config['template_path']);
-        if (!is_array($elements)) {
-            $this->errorMessage('Could not package in templates.');
-        } else {
-            $category->addMany($elements);
-            $this->infoMessage('Packaged in ' . count($elements) . ' templates.');
+        if (isset($this->config['templates'])) {
+            $elements = $this->createElement($this->config['templates'], 'modTemplate', $this->config['template_path']);
+            if (!is_array($elements)) {
+                $this->errorMessage('Could not package in templates.');
+            } else {
+                $category->addMany($elements);
+                $this->infoMessage('Packaged ' . count($elements) . ' of ' . count($this->config['templates']) . ' templates.');
+            }
+            unset($elements);
         }
-        unset($elements);
     }
 
     /**
@@ -461,14 +467,16 @@ class Builder
      */
     private function addPlugins(&$category): void
     {
-        $elements = $this->createElement($this->config['plugins'], 'modPlugin', $this->config['plugin_path']);
-        if (!is_array($elements)) {
-            $this->errorMessage('Could not package in plugins.');
-        } else {
-            $category->addMany($elements);
-            $this->infoMessage('Packaged in ' . count($elements) . ' plugins.');
+        if (isset($this->config['plugins'])) {
+            $elements = $this->createElement($this->config['plugins'], 'modPlugin', $this->config['plugin_path']);
+            if (!is_array($elements)) {
+                $this->errorMessage('Could not package in plugins.');
+            } else {
+                $category->addMany($elements);
+                $this->infoMessage('Packaged ' . count($elements) . ' of ' . count($this->config['plugins']) . ' plugins.');
+            }
+            unset($elements);
         }
-        unset($elements);
     }
 
     /**
@@ -498,7 +506,7 @@ class Builder
                         $this->setPluginEvents($rsp[$i], $property['events']);
                     }
                 } else {
-                    $this->errorMessage("Snippet $class not found in $path" . $property['filename']);
+                    $this->errorMessage("File $class not found in $path" . $property['filename']);
                 }
                 $i++;
             }
@@ -551,7 +559,7 @@ class Builder
                 }
             }
             $element->addMany($element_events);
-            $this->infoMessage('Packaged in ' . count($events) . ' plugin event for ' . $element->get('name') . '.');
+            $this->infoMessage('Packaged ' . $i . ' of ' . count($events) . ' plugin event for ' . $element->get('name') . '.');
             unset($i, $element_events, $events);
             flush();
         } else {
