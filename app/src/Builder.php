@@ -485,9 +485,8 @@ class Builder
             $i = 1;
             foreach ($properties as $property) {
                 if (file_exists($path . $property['filename'])) {
-                    $name = ($class === 'modTemplate') ? 'templatename' : 'name';
                     $rsp[$i] = $this->modx->newObject($class);
-                    $rsp[$i]->set($name, $property['name']);
+                    $rsp[$i]->set(($class == 'modTemplate') ? 'templatename' : 'name', $property['name']);
                     $rsp[$i]->set('content', $this->getFileContent($path . $property['filename']));
                     if (isset($chunk_property['description'])) {
                         $rsp[$i]->set('description', $property['description']);
@@ -633,7 +632,7 @@ class Builder
                 'Templates' => [
                     xPDOTransport::PRESERVE_KEYS => false,
                     xPDOTransport::UPDATE_OBJECT => true,
-                    xPDOTransport::UNIQUE_KEY => 'name'
+                    xPDOTransport::UNIQUE_KEY => 'templatename'
                 ]
             ]
         ];
