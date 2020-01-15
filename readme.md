@@ -3,17 +3,18 @@ The Transport Package Generator is a CLI tool to create simple transport package
 
 ## Installation
 Go to your favorite folder for these types of applications and execute the following lines.
-```
-git clone https://github.com/robotjoosen/TransportPackageGenerator.git
-cd TransportPackageGenerator
-chmod +x TransportPackageGenerator
-cd app
-composer install
+```zsh
+→ git clone https://github.com/robotjoosen/TransportPackageGenerator.git
+→ cd TransportPackageGenerator
+→ chmod +x TransportPackageGenerator
+→ cd app
+→ composer install
 ```
 
 Make it easy to be called with just a single word.
 Go and edit your `~/.bash_profile of` or `~/.zshrc` and paste the following line, don't forget to change the directory path.
-```
+
+```text
 export PATH=/path/to/TransportPackageGenerator/:$PATH
 ```
 
@@ -29,12 +30,14 @@ This folder needs atleast the `package.config.yaml` file, you can copy this from
 
 ### Build
 To build a transport package you need to go to the base folder of your MODX installation and run the following command
-```
+
+```zsh
 TransportPackageGenerator component_name
 ```
 
 The component_name is the name of your component. If everything runs smooth you'll see the package being build with a result that looks a bit like this:
-```
+
+```text
 [1970-01-01 00:00:00] (INFO @ /application/public_html/core/model/modx/transport/modpackagebuilder.class.php : 141) Created new transport package with signature: component_name-1.0.0-beta1
 [1970-01-01 00:00:00] (INFO @ /application/public_html/core/model/modx/transport/modpackagebuilder.class.php : 212) Registered package namespace as: component_name
 [1970-01-01 00:00:00] (INFO @ /application/public_html/core/model/modx/transport/modpackagebuilder.class.php : 232) Packaged namespace "component_name" into package.
@@ -54,7 +57,8 @@ Execution time: 8.6171 s
 
 #### package.config.yaml
 This is a sample of a package.config.yaml. Detailed information about the configuration will follow later.
-```
+
+```yaml
 PKG_NAME: SampleComponent
 PKG_VERSION: 1.0.0
 PKG_RELEASE: pl
@@ -89,10 +93,12 @@ menu:
     description: samplecomponent.desc
     action: index
 ```
+
 #### table.resolver.php
 The table resolver creates the necessary tables based on the schema of your component.
 Add your tables between `// Add your table` and `// End of your tables`.
-```
+
+```php
 <?php
 /**
  * @package samplecomponent
